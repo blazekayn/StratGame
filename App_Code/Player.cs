@@ -13,7 +13,7 @@ public class Player
         //
         // TODO: Add constructor logic here
         //
-        
+
     }
 
     /// <summary>
