@@ -17,7 +17,7 @@ public class Player
     }
 
     /// <summary>
-    /// Will load a player from the database using its PlayerID
+    /// Will load a player from the database using its PlayerID. hello World
     /// </summary>
     /// <param name="PlayerID">The ID of the player to load from the database</param>
     public Player(int PlayerID)
