@@ -13,5 +13,16 @@ public class Player
         //
         // TODO: Add constructor logic here
         //
+        
     }
+
+    /// <summary>
+    /// Will load a player from the database using its PlayerID
+    /// </summary>
+    /// <param name="PlayerID">The ID of the player to load from the database</param>
+    public Player(int PlayerID)
+    {
+
+    }
+    
 }
