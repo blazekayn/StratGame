@@ -11,5 +11,10 @@ public partial class TestPage : System.Web.UI.Page
     {
         Player player = new Player(1);
         Response.Write(player.Honor);
+        Response.Write(Player.NewPlayer("Dylan").PlayerID);
+        foreach(City c in player.Cities)
+        {
+            Response.Write(c.Name);
+        }
     }
 }
