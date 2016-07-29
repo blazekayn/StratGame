@@ -10,12 +10,13 @@ using System.Web;
 /// </summary>
 public class Player
 {
+
     //-------Fields---------//
-    public int PlayerID;
-    public string DisplayName;
-    public int Honor;
-    public int Experience;
-    public List<City> Cities;
+    public int PlayerID { get; set; }
+    public string DisplayName { get; set; }
+    public int Honor { get; set; }
+    public int Experience { get; set; }
+    public List<City> Cities { get; set; }
     //----End Fields--------//
 
     //------------Constructors-----------------//
