@@ -1,0 +1,21 @@
+Building Level Equation and Test Values 
+** This is an early equation that does not factor in Hero Level 
+
+Building Base Time = Time required to build the selected building at level 1
+Building Level = Ranges from 1 to 10 ( can be expanded )
+
+Time = (.995^(Building Base Time) + Building Level) * BuildingLevel * 1.35^(BuildingLevel)
+
+Test Values:
+
+Building Level: 1, -- Build Time: 0 Hours, 2.5 Minutes
+Building Level: 2, -- Build Time: 0 Hours, 12.71 Minutes
+Building Level: 3, -- Build Time: 0 Hours, 25.74 Minutes
+Building Level: 4, -- Build Time: 0 Hours, 46.34 Minutes
+Building Level: 5, -- Build Time: 1 Hours, 18.19 Minutes
+Building Level: 6, -- Build Time: 2 Hours, 6.67 Minutes
+Building Level: 7, -- Build Time: 3 Hours, 19.51 Minutes
+Building Level: 8, -- Build Time: 5 Hours, 7.81 Minutes
+Building Level: 9, -- Build Time: 7 Hours, 47.49 Minutes
+Building Level: 10, -- Build Time: 11 Hours, 41.24 Minutes
+Building Level: 11, -- Build Time: 17 Hours, 21.34 Minutes
