@@ -57,4 +57,17 @@ public class Building
         }
         return buildings;
     }
+
+    /// <summary>
+    /// Calculates Build Time for a building in seconds?
+    /// </summary>
+    /// <param name="CurrentBuildingLevel"></param>
+    /// <param name="BaseBuildTime"></param>
+    /// <returns></returns>
+    public static Double GetBuildTime(int CurrentBuildingLevel, int BaseBuildTime)
+    {
+        Double Time = (Math.Pow(.005, BaseBuildTime) + CurrentBuildingLevel) * (CurrentBuildingLevel * Math.Pow(1.35, CurrentBuildingLevel));
+
+        return Time;
+    }
 }

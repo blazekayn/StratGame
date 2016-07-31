@@ -15,17 +15,5 @@ public class Global_Functions
         //
 
     }
-         /// <summary>
-        /// Calculates Build Time for a building
-        /// </summary>
-        /// <param name="CurrentBuildingLevel"></param>
-        /// <param name="BaseBuildTime"></param>
-        /// <returns></returns>
-        public Double GetBuildTime(int CurrentBuildingLevel, int BaseBuildTime)
-    {
-        Double Time = (Math.Pow(.005, BaseBuildTime) + CurrentBuildingLevel) * (CurrentBuildingLevel * Math.Pow(1.35, CurrentBuildingLevel));
-
-        return Time;
-    }
 
 }
