@@ -52,7 +52,7 @@
                             for(var i = 0; i < json_obj.length; i++){
                                 lastMessage = json_obj[i].messageID;
                                 var div = document.getElementById('ChatTextDiv');
-                                var playerid = <%:Session["PlayerID"]%>;
+                                var playerid = <%:Player.GetPlayerIDFromSession()%>;
                                 if (playerid == json_obj[i].PlayerID){
                                     div.innerHTML = div.innerHTML + "<font color=\"red\">" + json_obj[i].sender + "[" + json_obj[i].MessageTime + "]: </font>" + json_obj[i].message + "<br/>";
                                 }else{
@@ -74,12 +74,34 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphHeading" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphSideBar" runat="Server">
+    <div id="ChatContainerDiv" runat="server" style="width: 290px; padding: 0; margin-left: auto; margin-right: auto; border: 2px solid black; border-radius: 3px; overflow: hidden;">
+        <!-- Chat box -->
+        <div id="ChatTextDiv" style="width: 100%; height: 150px; background-color: white; overflow: scroll; margin-left: auto; margin-right: auto; overflow-x: hidden;">
+        </div>
+        <div id="ChatControlsDiv" style="margin-left: auto; margin-right: auto; width: 100%;">
+            <asp:TextBox ID="txtChatMessage" runat="server" Text="" Width="225" />
+            <asp:Button ID="btnSendChatMessage" runat="server" Text="Send" Width="50" OnClientClick="SendChatMessage(); return false;" />
+        </div>
+
+    </div>
+    <!-- End Chat -->
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cphBody" runat="Server">
-    <div id="ChatTextDiv" style="width: 300px; height: 150px; background-color: white; border: 1px solid black; overflow: scroll;">
-    </div>
-    <br />
-    <asp:TextBox ID="txtChatMessage" runat="server" Text="" Width="300" />
-    <asp:Button ID="btnSendChatMessage" runat="server" Text="Send" Width="50" OnClientClick="SendChatMessage(); return false;" />
+    <asp:ScriptManager ID="smMain" runat="server" />
+    <asp:UpdatePanel ID="upMain" runat="server">
+        <ContentTemplate>
+            <asp:GridView ID="grdCity" runat="server" EmptyDataText="No Cities." AutoGenerateColumns="true" AutoGenerateSelectButton="true"
+                OnSelectedIndexChanged="grdCity_SelectedIndexChanged" DataKeyNames="CityID" AutoGenerateEditButton="true">
+            </asp:GridView>
+            <asp:GridView ID="grdBuilding" runat="server" AutoGenerateColumns="true" AutoGenerateSelectButton="true"
+                OnSelectedIndexChanged="grdBuilding_SelectedIndexChanged">
+            </asp:GridView>
+            <asp:DetailsView ID="dtlBuilding" runat="server" AutoGenerateRows="true">
+                <Fields>
+                    <asp:TemplateField></asp:TemplateField>
+                </Fields>
+            </asp:DetailsView>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>
 

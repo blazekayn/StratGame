@@ -151,5 +151,12 @@ public class Player
         }
         return null;
     }
+
+    public static int GetPlayerIDFromSession()
+    {
+        int id = -1;
+        id = ((Player)HttpContext.Current.Session["Player"]).PlayerID;
+        return id;
+    }
     //----------------End Static Methods-----------------//
 }
