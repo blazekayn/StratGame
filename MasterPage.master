@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Strat Game</title>
+    <link rel="stylesheet" href="STRAT.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <asp:ContentPlaceHolder ID="cphScriptInclude" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="margin: 0; background-color: lightBlue">
+    <form id="form1" runat="server">
+        <div class="SiteHeadingDiv">
+            <asp:ContentPlaceHolder ID="cphHeading" runat="server" >
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="SiteSideBarDiv">
+            <asp:ContentPlaceHolder ID="cphSideBar" runat="server" >
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="SiteMainBodyDiv">
+            <asp:ContentPlaceHolder ID="cphBody" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
