@@ -43,8 +43,23 @@ public partial class _Default : System.Web.UI.Page
         return JsonConvert.SerializeObject(ChatOperations.GetLastMessage());
     }
     //------------------END CHAT METHODS--------------------------//
+    //-----------------TICK COUNTDOWN TIMER METHODS---------------//
+    [WebMethod]
+    [ScriptMethod(UseHttpGet = false)]
+    public static int GetSecTillNextTick()
+    {
+        //Calculate the number of seconds until the next even minute in server time
+        int minutes = DateTime.Now.Minute;
+        int seconds = DateTime.Now.Second;
+        int adjust = 1 - (minutes % 2);
+        int nextMinutes = adjust;
+        adjust = adjust * 60;
+        int nextSeconds = 60 - (seconds % 60);
+        adjust += nextSeconds;;
+        return adjust;
+    }
+    //--------------END TICK COUNTDOWN TIMER METHODS--------------//
 
-    
     protected void grdCity_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (grdCity.SelectedIndex != -1)
