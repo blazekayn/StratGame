@@ -13,7 +13,7 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack) { Session["Player"] = new Player(1); } //For testing remove once login page is live
+        if (!Global_Functions.CheckLoggedIn()) { Response.Redirect("login.aspx"); }
         //Bind the City Gridview
         grdCity.DataSource = ((Player)Session["Player"]).Cities;
         grdCity.DataBind();

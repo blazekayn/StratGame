@@ -7,6 +7,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="cphSideBar" runat="Server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cphBody" runat="Server">
-    
+    <asp:ScriptManager ID="smMain" runat="server" />
+    <asp:Login ID="lgnMain" runat="server" RememberMeSet="true" OnAuthenticate="lgnMain_Authenticate" />
 </asp:Content>
 

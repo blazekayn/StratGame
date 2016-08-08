@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 /// <summary>
@@ -167,6 +168,48 @@ public class Player
             
         }
         return lb;
+    }
+
+    /// <summary>
+    /// Validate the given username and password
+    /// </summary>
+    /// <param name="username">The username to validate</param>
+    /// <param name="password">The password entered by the user</param>
+    /// <returns>True if the password matches the username false if not.</returns>
+    public static bool ValidatePlayer(string username, string password)
+    {
+        bool valid = false;
+        using (SqlConnection conn = new SqlConnection(ConfigurationManager.AppSettings["DB"].ToString()))
+        {
+            conn.Open();
+            //get password from database
+            string sql = "SELECT Password, PasswordSalt from PLAYER WHERE Username=@Username";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@Username", username);
+            SqlDataReader dr = cmd.ExecuteReader();
+            string passhash = "";
+            string passsalt = "";
+            if (dr.Read())
+            {
+                passhash = dr["Password"].ToString();
+                passsalt = dr["PasswordSalt"].ToString();
+            }
+            dr.Close();
+            //encrypt given password and see if it matches
+            if(Global_Functions.GenerateSaltedHash(Encoding.ASCII.GetBytes(password), Encoding.ASCII.GetBytes(passsalt))== Encoding.ASCII.GetBytes(passhash))
+            {
+                valid = true;
+            }
+            conn.Close();
+        }
+        return valid;
+    }
+
+    public static void SetPlayerPassword(int PlayerID, string password)
+    {
+        string salt = Global_Functions.RandomString(6);
+        password += salt;
+        
     }
     //----------------End Static Methods-----------------//
 }
