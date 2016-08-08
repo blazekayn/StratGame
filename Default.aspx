@@ -148,17 +148,39 @@
 
     </div>
     <!-- End Chat -->
+    <!-- Current Queue -->
+    <div id="CurrentQueueDiv">
+
+    </div>
+    <!-- End Current Queue -->
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cphBody" runat="Server">
     <asp:ScriptManager ID="smMain" runat="server" />
     <asp:UpdatePanel ID="upMain" runat="server">
         <ContentTemplate>
-            <asp:Button ID="btnRefresh" runat="server" Text="Refresh" UseSubmitBehavior="true" />
+            <asp:Button ID="btnRefresh" runat="server" Text="Refresh" />
             <asp:GridView ID="grdCity" runat="server" EmptyDataText="No Cities." AutoGenerateColumns="true" AutoGenerateSelectButton="true"
                 OnSelectedIndexChanged="grdCity_SelectedIndexChanged" DataKeyNames="CityID" AutoGenerateEditButton="true">
+                <Columns>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton ID="lbSelect" runat="server" Text="Select" />
+                            <asp:LinkButton ID="lbAbandon" runat="server" Text="Abandon" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
             </asp:GridView>
             <asp:GridView ID="grdBuilding" runat="server" AutoGenerateColumns="true" AutoGenerateSelectButton="true"
                 OnSelectedIndexChanged="grdBuilding_SelectedIndexChanged">
+                <Columns>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton ID="lbDetails" runat="server" Text="Details" />
+                            <asp:LinkButton ID="Upgrade" runat="server" Text="Upgrade" />
+                            <asp:LinkButton ID="Downgrade" runat="server" Text="Downgrade" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
             </asp:GridView>
             <asp:DetailsView ID="dtlBuilding" runat="server" AutoGenerateRows="true">
                 <Fields>

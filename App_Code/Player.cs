@@ -158,5 +158,15 @@ public class Player
         id = ((Player)HttpContext.Current.Session["Player"]).PlayerID;
         return id;
     }
+
+    public static List<BuildingQueue> GetPlayerBuildingQueueByID()
+    {
+        List<BuildingQueue> lb = new List<BuildingQueue>();
+        using (SqlConnection conn = new SqlConnection(ConfigurationManager.AppSettings["DB"].ToString()))
+        {
+            
+        }
+        return lb;
+    }
     //----------------End Static Methods-----------------//
 }
